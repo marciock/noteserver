@@ -31,7 +31,11 @@ module.exports={
             else{
                 bcrypt.compare(qpass,results.password,(err,data)=>{
                     if(data===true){
-                        res.json(results);
+
+                        let message={error:false};
+                        let obj=Object.assign(message,results.dataValues);
+                       // res.json(results);
+                        res.json(obj);
                     }
                     else{
                      let message={
