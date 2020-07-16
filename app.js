@@ -3,11 +3,13 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const expressSession=require('express-session');
+//const expressSession=require('express-session');
+const cors=require('cors');
 
 const indexRouter = require('./routes/index');
 const userShow=require('./routes/users/show');
 const userSave=require('./routes/users/save');
+const loginRouter=require('./routes/users/login');
 
 
 const db=require('./models');
@@ -28,15 +30,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(__dirname+'/public'));
 
-app.use(expressSession({secret:'abco789avb87wer34'}))
+const optCors={
+
+  origin: '*', // client (todo mundo pode acessar)
+  
+  optionsSuccessStatus: 200
+  
+  }
+  app.use(cors(optCors));
+
+//app.use(expressSession({secret:'abco789avb87wer34'}))
 
 app.use('/', indexRouter);
 app.use('/user_save',userSave);
 app.use('/user_show',userShow);
+app.use('/login',loginRouter);
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  
   next(createError(404));
 });
 

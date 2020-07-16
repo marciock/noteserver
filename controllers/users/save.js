@@ -17,7 +17,7 @@ module.exports={
             updatedAt:Date()
         }
         Users.create(data).then((results)=>{
-            res.redirect('/users');
+            res.json(results);
         })
     }
 }
