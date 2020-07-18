@@ -10,10 +10,12 @@ const indexRouter = require('./routes/index');
 const userShow=require('./routes/users/show');
 const userSave=require('./routes/users/save');
 const userEdit=require('./routes/users/edit');
+const userUpdate=require('./routes/users/update');
 
 const loginRouter=require('./routes/users/login');
 const noteSave=require('./routes/notes/save');
 const noteShow=require('./routes/notes/show');
+const noteDelete=require('./routes/notes/delete');
 
 
 
@@ -50,9 +52,13 @@ app.use('/', indexRouter);
 app.use('/user_save',userSave);
 app.use('/user_show',userShow);
 app.use('/login',loginRouter);
+app.use('/user_edit',userEdit);
+app.use('/user_up',userUpdate)
+
 app.use('/note_save',noteSave);
 app.use('/show_notes_user',noteShow);
-app.use('/user_edit',userEdit);
+app.use('/note_del',noteDelete);
+
 
 
 // catch 404 and forward to error handler
