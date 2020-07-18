@@ -55,5 +55,33 @@ module.exports={
        
        
         
+    },
+    showEdit:(req,res)=>{
+        const qId=req.query.id;
+        //const qpass=req.body.password;
+
+        //console.log(qemail);
+       let results=Users.findOne({where:{actived:true,id:qId}}).then((results)=>{
+        if(results===null){
+            let message={
+                error:true,
+                field:'id',
+                text:'Usuário não encontrado'
+                }
+                
+                res.json(message);
+            }
+            else{
+                
+                     res.json(results)
+                        
+         
+                    }
+              
+               
+    
+            })
+      
+
     }
 }

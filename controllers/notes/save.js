@@ -5,12 +5,15 @@ const {Notes}=require('../../models');
 module.exports={
     save:(req,res)=>{
         const data={
-            produto:req.body.produto,
-            marca:req.body.marca,
-            preco:req.body.preco
+            user:req.body.id,
+            title:req.body.title,
+            note:req.body.note,
+            actived:true,
+            createdAt:Date(),
+            updatedAt:Date()
         }
         Notes.create(data).then((results)=>{
-            res.redirect('/notes');
+            res.json(results);
         })
     }
 }
