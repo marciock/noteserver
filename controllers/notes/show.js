@@ -12,5 +12,33 @@ module.exports={
             //res.render('produtos/produtos',{data:results});
             res.json(results);
         })
+    },
+    showEdit:(req,res)=>{
+        const qId=req.query.id;
+        //const qpass=req.body.password;
+
+        //console.log(qemail);
+       let results=Notes.findOne({where:{actived:true,id:qId}}).then((results)=>{
+        if(results===null){
+            let message={
+                error:true,
+                field:'id',
+                text:'Nota não encontrada'
+                }
+                
+                res.json(message);
+            }
+            else{
+                
+                     res.json(results)
+                        
+         
+                    }
+              
+               
+    
+            })
+      
+
     }
 }

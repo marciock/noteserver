@@ -10,8 +10,8 @@ module.exports={
             
             updatedAt:Date()
         }
-        Notes.update(data,{where:{id:req.body.id}}).then((rows)=>{
-            Notes.findOne({where:{id:req.body.id}}).then((results)=>{
+        Notes.update(data,{returning: true,where:{id:req.query.id}}).then((rows)=>{
+            Notes.findOne({where:{id:req.query.id}}).then((results)=>{
                 res.json(results)
             })
             

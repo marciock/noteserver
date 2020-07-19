@@ -16,6 +16,8 @@ const loginRouter=require('./routes/users/login');
 const noteSave=require('./routes/notes/save');
 const noteShow=require('./routes/notes/show');
 const noteDelete=require('./routes/notes/delete');
+const noteEdit=require('./routes/notes/edit');
+const noteUpdate=require('./routes/notes/update');
 
 
 
@@ -58,6 +60,8 @@ app.use('/user_up',userUpdate)
 app.use('/note_save',noteSave);
 app.use('/show_notes_user',noteShow);
 app.use('/note_del',noteDelete);
+app.use('/note_edit',noteEdit);
+app.use('/note_up',noteUpdate);
 
 
 

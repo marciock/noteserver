@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const notes=require('../../controllers/notes/show')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+router.get('/', notes.showEdit);
 
 module.exports = router;
